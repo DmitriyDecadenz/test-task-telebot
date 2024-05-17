@@ -21,10 +21,8 @@ async def cmd_start(message: Message) -> None:
 @router.message(F.text == '/task')
 async def get_task(message: Message) -> None:
     task = await rq.get_tasks()
-    task_list = []
-    for tasks in task:
-        task_list.append(tasks.description)
-    await message.answer(f'список задач \n{task_list}')
+    for task in await rq.get_tasks():
+        await message.answer(f'Задача: \n \n{task.id}. {task.description}')
 
 
 @router.message(F.text == '/add')

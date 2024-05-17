@@ -13,13 +13,12 @@ async def set_user(tg_id: int) -> None:
             await session.commit()
 
 
-async def get_tasks() -> list[Any]:
+async def get_tasks():
     async with async_session() as session:
-        tasks = select(TaskModel)
-        await session.execute(tasks)
-        return await session.scalars(tasks)
+        tasks_query = select(TaskModel)
+        result = await session.execute(tasks_query)
+        return result.scalars().all()
         # return await session.scalars(select(TaskModel))
-
 
 
 async def add_task(description: str) -> None:
