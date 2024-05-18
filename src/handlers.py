@@ -20,10 +20,8 @@ async def cmd_start(message: Message) -> None:
     await message.answer('Выберите действие', reply_markup=kb.main)
 
 
-
 @router.message(F.text == '/tsk')
 async def get_task(message: Message) -> None:
-    task = await rq.get_tasks()
     for task in await rq.get_tasks():
         await message.answer(f'Задача: \n \n{task.id}. {task.description}')
 
