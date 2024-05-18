@@ -1,5 +1,5 @@
-from aiogram.types import (ReplyKeyboardMarkup, KeyboardButton,
-                           InlineKeyboardMarkup, InlineKeyboardButton)
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+
 
 main = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='/add')],
                                      [KeyboardButton(text='/tsk')],],
