@@ -28,11 +28,22 @@ pip install -r requirements.txt
 create .env file
 fill the fields
 example:
+```terminal
 PG_USER='postgres'
+```
+```terminal
 PG_DATABASE='test-task'
+```
+```terminal
 PG_HOST='localhost'
+```
+```terminal
 PG_PORT=5432
+```
+```terminal
 PG_PASSWORD='postgres'
+```
+```terminal
 BOT_TOKEN='' create bot in botfather and take token 
-
+```
 ### Run main.py file
