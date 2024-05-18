@@ -28,6 +28,6 @@ class TaskModel(Base):
     description: Mapped[str] = mapped_column(String(250))
 
 
-async def async_main():
+async def async_main() -> None:
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
