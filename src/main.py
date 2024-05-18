@@ -8,7 +8,8 @@ from src.database.models import async_main
 from src.handlers import router
 
 
-async def main():
+async def main() -> None:
+    """Program entry point"""
     load_dotenv()
     await async_main()
     bot = Bot(token=os.getenv('BOT_TOKEN'))
