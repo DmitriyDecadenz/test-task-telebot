@@ -35,6 +35,7 @@ async def add_task(message: Message, state: FSMContext) -> None:
 @router.message(Reg.description)
 async def add_tasks_two(message: Message, state: FSMContext) -> None:
     await state.update_data(description=message.text)
+    await message.answer('Задача добавлена')
     data = await state.get_data()
     await rq.add_task(data["description"])
     await state.clear()
