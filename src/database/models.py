@@ -1,8 +1,11 @@
+import os
 from sqlalchemy import String, BigInteger
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_engine
+from dotenv import load_dotenv
 
-engine = create_async_engine(url='postgresql+asyncpg://postgres:postgres@localhost:5432/test-task')
+load_dotenv()
+engine = create_async_engine(url=f'postgresql+asyncpg://{os.getenv('PG_USER')}:{os.getenv('PG_PASSWORD')}@{os.getenv('PG_HOST')}:{os.getenv('PG_PORT')}/{os.getenv('PG_DATABASE')}')
 
 async_session = async_sessionmaker(engine)
 
