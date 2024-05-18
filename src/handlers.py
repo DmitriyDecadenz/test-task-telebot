@@ -4,6 +4,7 @@ from aiogram.filters import CommandStart
 import src.database.requests as rq
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
+import src.keyboards as kb
 
 router = Router()
 
@@ -15,10 +16,12 @@ class Reg(StatesGroup):
 @router.message(CommandStart())
 async def cmd_start(message: Message) -> None:
     await rq.set_user(message.from_user.id)
-    await message.answer('Добро пожаловать в трекер задач \n добавить задачу </add> \n посмотреть задачи </task>')
+    await message.answer('Добро пожаловать в трекер задач \nдобавить задачу </add> \nпосмотреть задачи </tsk>')
+    await message.answer('Выберите действие', reply_markup=kb.main)
 
 
-@router.message(F.text == '/task')
+
+@router.message(F.text == '/tsk')
 async def get_task(message: Message) -> None:
     task = await rq.get_tasks()
     for task in await rq.get_tasks():
